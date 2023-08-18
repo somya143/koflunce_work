@@ -19,8 +19,8 @@ const UserDetail = () => {
   return (
     <div>
       <h2>User Details</h2>
-      <p>Email: {userData.email}</p>
-      <p>Phone: {userData.phone}</p>
+      {userData.email && <p>Email: {userData.email}</p>}
+     {userData.phone && <p>Phone: {userData.phone}</p>}
       <p>Password: {showPassword ? userData.password : '********'}
         <button onClick={togglePasswordVisibility}>
           {showPassword ? 'Hide Password' : 'Show Password'}

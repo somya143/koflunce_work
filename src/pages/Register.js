@@ -74,7 +74,9 @@ const Register = () => {
         pauseOnHover: true,
         draggable: true,
       });
-      navigate('/login')
+      setTimeout(() => {
+        navigate('/login')
+       }, 3000)
     }else{
       toast.error('Registeration failed. Kindly try again', {
         position: 'top-center',

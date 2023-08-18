@@ -20,6 +20,28 @@ useEffect(() => {
   }, []);
 const handleSubmit = async(e) => {
 e.preventDefault();
+if (!/^\S+@\S+\.\S+$/.test(email) && !/^\d{10}$/.test(phone)) {
+    toast.error('Please enter either your email or phone number', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+    return;
+  }
+  if (!password) {
+    toast.error('Please enter your password', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+    return;
+  }
 const user = simulatedRegisteredUsers.find(user => (user.email === email || user.phone === phone) && user.password === password);
 const data = {
     password, 
@@ -37,7 +59,10 @@ if (user) {
       });
     console.log("Login successful");
     localStorage.setItem("login-data",JSON.stringify(data))
-    navigate("/userDetails")
+    setTimeout(() => {
+
+        navigate("/userDetails")
+    },3000)
   } else {
     setIsAuthenticated(false);
     toast.error('Login failed. Kindly check your credentials', {
