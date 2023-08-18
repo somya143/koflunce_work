@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import Register from './pages/Register';
+import AllRoutes from './route/AllRoutes';
 
 function App() {
   return (
     <div className="App">
-      <Register />
+      <AllRoutes />
     </div>
   );
 }
