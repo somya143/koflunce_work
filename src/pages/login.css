@@ -111,3 +111,22 @@
     border: none;
     background: linear-gradient(to bottom right, #87CEEB, #00BFFF);
 }
+
+@media screen and (max-width: 900px) {
+    .loginImageBox{
+        display: none;
+    }
+    .loginFormBox{
+        width: 100%;
+    }
+    .loginFormBox>h2{
+        font-size: 20px;
+    }
+    .loginFormBox>h6{
+        font-size: 18px;
+    }
+    .loginForm{
+        width: 90%;
+    }
+   
+ }
