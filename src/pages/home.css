@@ -1,0 +1,23 @@
+.home{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: space-around;
+    height: 100px;
+    align-items: center;
+}
+.signupLink{
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+}
+.loginLink{
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+}
+.userDetail{
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+}
