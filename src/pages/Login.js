@@ -5,8 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-const [email,setEmail] = useState("");
-const [phone,setPhone] = useState("");
+  const [emailOrPhone, setEmailOrPhone] = useState("");
 const [password,setPassword] = useState("");
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 const [simulatedRegisteredUsers, setSimulatedRegisteredUsers] = useState([]);
@@ -20,17 +19,17 @@ useEffect(() => {
   }, []);
 const handleSubmit = async(e) => {
 e.preventDefault();
-if (!/^\S+@\S+\.\S+$/.test(email) && !/^\d{10}$/.test(phone)) {
-    toast.error('Please enter either your email or phone number', {
-      position: 'top-center',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
-    return;
-  }
+if (!emailOrPhone) {
+  toast.error('Please enter your email or phone number', {
+    position: 'top-center',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+  return;
+}
   if (!password) {
     toast.error('Please enter your password', {
       position: 'top-center',
@@ -42,11 +41,13 @@ if (!/^\S+@\S+\.\S+$/.test(email) && !/^\d{10}$/.test(phone)) {
     });
     return;
   }
-const user = simulatedRegisteredUsers.find(user => (user.email === email || user.phone === phone) && user.password === password);
-const data = {
-    password, 
-    ...(email ? { email } : { phone }), // Storing either email or phone
+  const user = simulatedRegisteredUsers.find(user => (user.email === emailOrPhone || user.phone === emailOrPhone) && user.password === password);
+  const data = {
+    password,
+    ...(user.email ? { email: user.email } : {}),
+    ...(user.phone ? { phone: user.phone } : {}),
   };
+  
 if (user) {
     setIsAuthenticated(true);
     toast.success('Login successful', {
@@ -88,18 +89,21 @@ if (user) {
         <h2>Hey, Welcome 🙏</h2>
         <h6>Enter the credential you entered while signup.</h6>
         <form className='loginForm' onSubmit={handleSubmit}>
-         <label>Email :</label>
-         <input  type='email' onChange={(e) => setEmail(e.target.value)} />
-         <br></br>
-         <label>Phone Number :</label>
-         <input  type='tel' onChange={(e) => setPhone(e.target.value)}  />
-         <br></br>
-         <label>Password :</label>
-         <input  type='password' onChange={(e) => setPassword(e.target.value)}  />
-         <br></br>
-         <button id='loginBtn' type='submit'>Login</button>
-         <h6><span>If you are new to website, kindly</span>{" "}<Link to={"/signup"} >register</Link></h6>
-        <button id='google'>Sign in with google</button>
+          <label>Email or Phone:</label>
+          <input
+            type='text'
+            onChange={(e) => setEmailOrPhone(e.target.value)}
+          />
+          <br />
+          <label>Password:</label>
+          <input
+            type='password'
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <button id='loginBtn' type='submit'>Login</button>
+          <h6><span>If you are new to the website, kindly</span>{" "}<Link to={"/signup"} >register</Link></h6>
+          <button id='google'>Sign in with Google</button>
         </form>
       </div>
       <ToastContainer />

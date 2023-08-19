@@ -1,0 +1,23 @@
+.users{
+    width: 40%;
+    height: 20rem;
+    margin: auto;
+    margin-top: 5rem;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.users>h1{
+    font-size: 3rem;
+    text-decoration: underline;
+    color: #777;
+}
+.users>p{
+    font-size: 2rem;
+    margin-top: 1.5rem;
+}
+.users>p>button{
+    color: #fff;
+    background: #000;
+    height: 25px;
+    margin-left: 20px;
+}

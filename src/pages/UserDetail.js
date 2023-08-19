@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import "./userDetails.css";
 
 const UserDetail = () => {
     const [userData, setUserData] = useState(null);
@@ -17,8 +18,8 @@ const UserDetail = () => {
     return <div>No user data found.</div>;
   }
   return (
-    <div>
-      <h2>User Details</h2>
+    <div className='users'>
+      <h1>User Details</h1>
       {userData.email && <p>Email: {userData.email}</p>}
      {userData.phone && <p>Phone: {userData.phone}</p>}
       <p>Password: {showPassword ? userData.password : '********'}
